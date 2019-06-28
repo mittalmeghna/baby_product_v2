@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <form method="POST" class="col-9">
+       <div class="col-lg-4 col-lg-offset-4">
+          <div class="input-group text-center">
+            <input type="text" class="form-control form-control-sm" name="productId" value="{{productId}}" placeholder="enter product id">
+
+	    <span> <button type="submit"  class="btn-group btn-group-sm float-right">search</button> </span> 
+          </div> 
+  </form>
+  </div>
+  <br>
+  <br>
+
+{% if product_id %}
+  <div> 
+<table class="table table-condensed">
+  <tbody>
+    <tr>
+      <th> </th>
+      <td scope="col">Product Name</td>
+      <td scope="col">{{product_name}}</td>
+      <td><img src="britax.jpg" class="img-responsive voc_list_preview_img" alt="" border=1 height=100 width=100></img></td>
+    </tr>
+     <tr>
+      <th> </th>
+      <td scope="col">Car Fit</td>
+      <td scope="col">{{topic_sentiment.car_fit}}</td>
+         <td scope="col">{{positive_reviews.car_fit}}</td>
+       <td scope="col">{{negative_reviews.car_fit}}</td>
+    </tr>
+    <tr>
+      <th> </th>
+      <td scope="col">Comfort</td>
+      <td scope="col">{{topic_sentiment.comfort}}</td>
+      <td scope="col">{{positive_reviews.comfort}}</td>
+      <td scope="col">{{negative_reviews.comfort}}</td>
+    </tr>
+    <tr>
+      <th> </th>
+      <td scope="col">Ease of Install</th>
+      <td>{{topic_sentiment.ease_of_install}}</td>
+      <td scope="col">{{positive_reviews.ease_of_install}}</td>
+      <td scope="col">{{negative_reviews.ease_of_install}}</td>
+    </tr>
+    <tr>
+      <th> </th>
+      <td scope="col">Material</th>
+      <td>{{topic_sentiment.material}}</td>
+      <td>{{positive_reviews.material}}</td>
+      <td>{{negative_reviews.material}}</td>
+    </tr>
+  </tbody>
+</table>
+</div> 
+{% endif %}
+</div>
+<br\>
+<br\>
+
+{% endblock content %}
