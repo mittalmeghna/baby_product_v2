@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
+
 <div class="row">
-  <form method="POST" class="col-9">
-       <div class="col-lg-4 col-lg-offset-4">
+  <form method="POST" class="col-12">
+       <div class="col-md-12 col-md-offset-8" align="text-center">
           <div class="input-group text-center">
             <input type="text" class="form-control form-control-sm" name="productId" value="{{productId}}" placeholder="enter product id">
 
@@ -14,21 +15,31 @@
   <br>
 
 {% if product_id %}
-  <div> 
-<table class="table table-condensed">
+  <div>
+  <div>
+	<h4>{{product_name}}</h4> 
+  </div> 
+<table class="table table-condensed table-striped">
   <tbody>
-    <tr>
-      <th> </th>
-      <td scope="col">Product Name</td>
-      <td scope="col">{{product_name}}</td>
-      <td><img src="britax.jpg" class="img-responsive voc_list_preview_img" alt="" border=1 height=100 width=100></img></td>
-    </tr>
-     <tr>
-      <th> </th>
+      <th> </th> 
+      <th>Feature</th>
+      <th>Rating</th>
+      <th>Top positive review</th> 
+      <th>Top negative review</th> 
+      <tr>
+      <th> </th> 
       <td scope="col">Car Fit</td>
       <td scope="col">{{topic_sentiment.car_fit}}</td>
          <td scope="col">{{positive_reviews.car_fit}}</td>
        <td scope="col">{{negative_reviews.car_fit}}</td>
+    </tr>
+    </tr>
+     <tr>
+      <th> </th>
+      <td scope="col">Child Fit</td>
+      <td scope="col">{{topic_sentiment.child_fit}}</td>
+         <td scope="col">{{positive_reviews.child_fit}}</td>
+       <td scope="col">{{negative_reviews.child_fit}}</td>
     </tr>
     <tr>
       <th> </th>
@@ -50,6 +61,13 @@
       <td>{{topic_sentiment.material}}</td>
       <td>{{positive_reviews.material}}</td>
       <td>{{negative_reviews.material}}</td>
+    </tr>
+    <tr>
+      <th> </th>
+      <td scope="col">Price</th>
+      <td>{{topic_sentiment.price}}</td>
+      <td>{{positive_reviews.price}}</td>
+      <td>{{negative_reviews.price}}</td>
     </tr>
   </tbody>
 </table>
