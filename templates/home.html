@@ -1,79 +1,172 @@
 {% extends "layout.html" %}
 {% block content %}
+<style>
+        body{
+            font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            color:#9B9999;
+            font-size: 120%; 
+        }
+/* h3{font-size:20px}
+.float{float:left; position:relative}
+.clear{clear:both;}
+.margin{ margin:20px 0} */
+ p{margin:10px 0}
+.m_info {margin:0 auto; clear:both; width:100%;position:relative }
+.m_info ul{list-style:none: float:none; margin: 0 auto; position:relative}
+.m_info ul li{margin-bottom:30px; position:relative; clear:both; text-align:left;}
+.m_info ul li div{width:10%; border:1px solid #000; float:left;position:relative;margin:0px; padding:10px;}
+.m_info ul li p{width:80%; border:1px solid red; float:left;position:relative; margin:0px; padding:10px; }
 
-<div class="row">
-  <form method="POST" class="col-12">
-       <div class="col-md-12 col-md-offset-8" align="text-center">
-          <div class="input-group text-center">
-            <input type="text" class="form-control form-control-sm" name="productId" value="{{productId}}" placeholder="enter product id">
+.row-padded {
+  padding: 1px;
+/*  background-color: #faf0fc; */ 
+/*   background-color: #f2f5fa; */ 
+  border: 0.025px dashed #DDD;
+}
 
-	    <span> <button type="submit"  class="btn-group btn-group-sm float-right">search</button> </span> 
-          </div> 
-  </form>
-  </div>
-  <br>
-  <br>
+.row-padded-example {
+  padding: 1px;
+}
 
-{% if product_id %}
-  <div>
-  <div>
-	<h4>{{product_name}}</h4> 
-  </div> 
-<table class="table table-condensed table-striped">
-  <tbody>
-      <th> </th> 
-      <th>Feature</th>
-      <th>Rating</th>
-      <th>Top positive review</th> 
-      <th>Top negative review</th> 
-      <tr>
-      <th> </th> 
-      <td scope="col">Car Fit</td>
-      <td scope="col">{{topic_sentiment.car_fit}}</td>
-         <td scope="col">{{positive_reviews.car_fit}}</td>
-       <td scope="col">{{negative_reviews.car_fit}}</td>
-    </tr>
-    </tr>
-     <tr>
-      <th> </th>
-      <td scope="col">Child Fit</td>
-      <td scope="col">{{topic_sentiment.child_fit}}</td>
-         <td scope="col">{{positive_reviews.child_fit}}</td>
-       <td scope="col">{{negative_reviews.child_fit}}</td>
-    </tr>
-    <tr>
-      <th> </th>
-      <td scope="col">Comfort</td>
-      <td scope="col">{{topic_sentiment.comfort}}</td>
-      <td scope="col">{{positive_reviews.comfort}}</td>
-      <td scope="col">{{negative_reviews.comfort}}</td>
-    </tr>
-    <tr>
-      <th> </th>
-      <td scope="col">Ease of Install</th>
-      <td>{{topic_sentiment.ease_of_install}}</td>
-      <td scope="col">{{positive_reviews.ease_of_install}}</td>
-      <td scope="col">{{negative_reviews.ease_of_install}}</td>
-    </tr>
-    <tr>
-      <th> </th>
-      <td scope="col">Material</th>
-      <td>{{topic_sentiment.material}}</td>
-      <td>{{positive_reviews.material}}</td>
-      <td>{{negative_reviews.material}}</td>
-    </tr>
-    <tr>
-      <th> </th>
-      <td scope="col">Price</th>
-      <td>{{topic_sentiment.price}}</td>
-      <td>{{positive_reviews.price}}</td>
-      <td>{{negative_reviews.price}}</td>
-    </tr>
-  </tbody>
-</table>
+</style>
+<div class="container" class="float-left" style="max-width: 700px;">
+        <form method="POST" class="col-12">
+          <div> enter ASIN number below </div> 
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" name="productId" value="b00834d5so" placeholder="enter ASIN number">
+          </div>
+	  <div> <label> select attribute </label> </div> 
+          <div class="form-group">
+			<select class="form-control form-control-lg" name="selectFeature" value="{{selectFeature}}">
+                <option>car fit</option>
+                <option>child fit</option>
+                <option>comfort</option>
+                <option>ease of use</option>
+                <option>ease of install</option>
+                <option>easy to clean</option>
+                <option>safety</option>
+                <option>travel</option>
+                <option>material</option>
+                <option>price</option>
+                <option>customer service</option>
+            </select>
+          </div>
+	  <div class="container" class="float-left"> 
+            <div class="form-group" >
+                <button type="submit"  class="btn-primary btn-group-sm ">search ratings!</button>
+            </div>
+	  </div>
+
+        </form>
 </div> 
-{% endif %}
+	  <div class="container" class="float-left" style="max-width: 850px"> 
+  		<div class="row justify-content-md-left row-padded-example">
+		<div class="col col-4">
+		<form method="POST"> 
+		 <input type="hidden"  name="productId" value="b00ahpzy68">
+		 <input type="hidden"  name="selectFeature" value="comfort">
+		<button type="submit"  class="btn-success btn-group-sm ">try example 1</button>
+		</form> 
+		</div> 
+		<div class="col col-4"> 
+		 <form method="POST"> 
+		 <input type="hidden"  name="productId" value="b005mqraak">
+		 <input type="hidden"  name="selectFeature" value="travel">
+                <button type="submit"  class="btn-success btn-group-med ">try example 2</button>
+		 </form> 
+		</div>
+		<div class="col col-sm-4">
+		 <form method="POST"> 
+		 <input type="hidden"  name="productId" value="b00834d5so">
+		 <input type="hidden"  name="selectFeature" value="ease of install">
+                <button type="submit"  class="btn-success btn-group-sm ">try example 3</button>
+		 </form> 
+		</div>
+		</div> 
+	  </div> 
+<div></br></div>
+<div>
+
+
+<div class="container" class ="float-left" style="max-width: 750px;">
+  <div class="row justify-content-md-center row-padded">
+      product feature glossary
+  </div> 
+  <div class="row justify-content-md-left row-padded">
+    <div class="col col-lg-4">
+      car fit
+    </div>
+    <div class="col-md-left" class="text-sm-left row-padded">
+      car seat fit in different sized vehicles.
+    </div>
+  </div>
+<div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+      child fit 
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+      how well does car seat fit based on child's age, height, weight.  
+  </div>
 </div>
+<div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+     safety
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+     safety for your child, in different scenarios. 
+  </div>
+</div>
+    <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+     price
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+     rating and reviews curated with price in mind	  
+  </div>
+</div>
+    <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+     comfort
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+     comfort for child - seating, harness and fabric.	  
+  </div>
+</div>
+    <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+    travel friendly 
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+     ease of carrying and packing during travel	via road/air.  
+  </div>
+</div>
+ <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+    ease of clean 
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+    ease of cleaning dirt, snack crumbs and spills. 	  
+  </div>
+</div>
+ <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+    ease of install 
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+    installation instructions and features (i.e. latch connectors) 
+  </div>
+</div>
+ <div class="row justify-content-md-left row-padded">
+  <div class="col col-lg-4">
+    material 
+  </div>
+  <div class="col-md-left" class="text-sm-left">
+    comfort and quality of material (is it itchy/warm). 	  
+  </div>
+</div>
+
+
+</div> 
 <br\>
 <br\>
 
