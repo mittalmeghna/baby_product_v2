@@ -109,10 +109,15 @@ def home():
             print("exception") 
 
         import re 
-        top_review_1 = re.sub(r'\bbr\b', ',', top_review_1).lstrip(,).rstrip(,)
-        top_review_2 = re.sub(r'\bbr\b', ',', top_review_2).lstrip(,).rstrip(,)
-        bottom_review_1 = re.sub(r'\bbr\b', ',', bottom_review_1).lstrip(,).rstrip(,)
-        bottom_review_2 = re.sub(r'\bbr\b', ',', bottom_review_2).lstrip(,).rstrip(,)
+        top_review_1 = re.sub(r'\bbr\b', ',', top_review_1)
+		top_review_1 = top_review_1.lstrip(,) 
+        top_review_2 = re.sub(r'\bbr\b', ',', top_review_2)
+		top_review_2 = top_review_2.lstrip(,) 
+        bottom_review_1 = re.sub(r'\bbr\b', ',', bottom_review_1)
+		bottom_review_1 = bottom_review_1.lstrip(,) 
+        bottom_review_2 = re.sub(r'\bbr\b', ',', bottom_review_2)
+		bottom_review_2 = bottom_review_2.lstrip(,) 
+
         # print(top_review_1) 
         # print(bottom_review_1)
         # print(product_img)
