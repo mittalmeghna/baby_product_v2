@@ -97,7 +97,7 @@ def home():
 
         # lookup reviews for each topic 
         review_rows = df_review.loc[df_review['product_id'] == product_id]
-        print(review_rows) 
+        # print(review_rows) 
         topic=selected_feature.replace('_',' ') 
         
         try: 
@@ -109,13 +109,13 @@ def home():
             print("exception") 
 
         import re 
-        top_review_1 = re.sub(r'\bbr\b', ',', top_review_1)
-        top_review_2 = re.sub(r'\bbr\b', ',', top_review_2)
-        bottom_review_1 = re.sub(r'\bbr\b', ',', bottom_review_1)
-        bottom_review_2 = re.sub(r'\bbr\b', ',', bottom_review_2)
-        print(top_review_1) 
-        print(bottom_review_1)
-        print(product_img)
+        top_review_1 = re.sub(r'\bbr\b', ',', top_review_1).lstrip(,).rstrip(,)
+        top_review_2 = re.sub(r'\bbr\b', ',', top_review_2).lstrip(,).rstrip(,)
+        bottom_review_1 = re.sub(r'\bbr\b', ',', bottom_review_1).lstrip(,).rstrip(,)
+        bottom_review_2 = re.sub(r'\bbr\b', ',', bottom_review_2).lstrip(,).rstrip(,)
+        # print(top_review_1) 
+        # print(bottom_review_1)
+        # print(product_img)
        #  for topic in topic_list:  
        #      clean_topic = topic.replace(" ","_")
        #      try:
